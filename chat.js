@@ -4,7 +4,7 @@
  */
 
 const CHAT_CONFIG = {
-  endpoint: 'https://yellow-water-39d4.shaw-swaraj16.workers.dev', 
+  endpoint: 'https://portfolio-gemini-3-flash-live.shaw-swaraj16.workers.dev', 
   contextPath: '/data/context.json'
 };
 
