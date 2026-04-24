@@ -118,7 +118,8 @@ class PortfolioChat {
     // 1. Check Projects (Name, Desc, Stack, Highlights)
     this.context.projects.forEach(p => {
       const pText = `${p.name} ${p.description} ${p.stack.join(' ')} ${p.highlights.join(' ')}`.toLowerCase();
-      if (pText.split(/\W+/).some(word => word.length > 3 && queryLower.includes(word))) {
+      const queryWords = queryLower.split(/\W+/).filter(w => w.length > 2);
+      if (queryWords.some(word => pText.includes(word))) {
         matches.add(`[Project: ${p.name}] ${p.description} (Stack: ${p.stack.join(', ')})`);
       }
     });
@@ -133,7 +134,9 @@ class PortfolioChat {
 
     // 3. Check Experience
     this.context.experience.forEach(e => {
-      if (queryLower.includes(e.company.toLowerCase()) || queryLower.includes(e.role.toLowerCase())) {
+      const eText = `${e.company} ${e.role}`.toLowerCase();
+      const queryWords = queryLower.split(/\W+/).filter(w => w.length > 2);
+      if (queryWords.some(word => eText.includes(word))) {
         matches.add(`[Experience] Swaraj worked as a ${e.role} at ${e.company} (${e.date}).`);
       }
     });
