@@ -267,12 +267,12 @@ layout: default
       <div class="project-header">
         <div class="project-icon">💼</div>
         <div class="project-title-group">
-          <div class="project-title">Job Tracker Portal</div>
+          <div class="project-title">EasyApply</div>
           <div class="project-type">Hiring Intelligence · ML Pipelines · Automation</div>
         </div>
         <span class="project-badge badge-private">Private</span>
       </div>
-      <p class="project-desc">Proprietary hiring intelligence platform and automation cockpit (Easy Apply). Features custom scrapers, heuristic/ML detail normalization, and enterprise-grade recruitment signals orchestration.</p>
+      <p class="project-desc">Proprietary hiring intelligence platform and automation cockpit. Features custom scrapers, heuristic/ML detail normalization, and enterprise-grade recruitment signals orchestration.</p>
       <ul class="project-highlights">
         <li>MiniLM-powered JD field extraction with automated retraining loop (Corrections → JSONL → Embeddings → Model)</li>
         <li>High-performance Rust-based HTML extractors and job feed parsers for native-speed ingestion</li>
