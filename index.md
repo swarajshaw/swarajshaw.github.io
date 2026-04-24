@@ -180,7 +180,7 @@ layout: default
   </div>
   <div class="projects-grid">
 
-    <div class="project-card" data-index="01">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🚗</div>
         <div class="project-title-group">
@@ -201,7 +201,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="02">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🧠</div>
         <div class="project-title-group">
@@ -222,7 +222,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="03">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">📁</div>
         <div class="project-title-group">
@@ -243,7 +243,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="04">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🌐</div>
         <div class="project-title-group">
@@ -263,7 +263,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="05">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">💼</div>
         <div class="project-title-group">
@@ -284,7 +284,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="06">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🐄</div>
         <div class="project-title-group">
@@ -304,7 +304,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="07">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🎵</div>
         <div class="project-title-group">
@@ -324,7 +324,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="08">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🎓</div>
         <div class="project-title-group">
@@ -344,7 +344,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="09">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🏠</div>
         <div class="project-title-group">
@@ -361,7 +361,7 @@ layout: default
 
 
 
-    <div class="project-card" data-index="10">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🩺</div>
         <div class="project-title-group">
@@ -380,7 +380,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="11">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">📄</div>
         <div class="project-title-group">
@@ -399,7 +399,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card" data-index="12">
+    <div class="project-card">
       <div class="project-header">
         <div class="project-icon">🎬</div>
         <div class="project-title-group">

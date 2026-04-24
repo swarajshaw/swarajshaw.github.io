@@ -583,24 +583,6 @@ body::before {
 
 .project-card:hover::after { opacity: 1; }
 
-.project-card::before {
-  content: 'FILE://' attr(data-index);
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.1em;
-  opacity: 0.4;
-  transition: var(--transition);
-}
-
-.project-card:hover::before {
-  opacity: 1;
-}
-
 .project-header {
   display: flex;
   align-items: flex-start;
