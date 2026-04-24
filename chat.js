@@ -1,209 +1,88 @@
-/**
- * Swaraj Shaw Portfolio - AI Chatbot (RAG)
- * Functional retrieval-augmented generation for portfolio insights.
- */
+document.addEventListener('DOMContentLoaded', () => {
+    const chatWidget = document.getElementById('chat-widget');
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatClose = document.getElementById('chat-close');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
 
-const CHAT_CONFIG = {
-  endpoint: 'https://portfolio-gemini-3-flash-live.shaw-swaraj16.workers.dev', 
-  contextPath: '/data/context.json'
-};
+    let contextData = null;
 
-class PortfolioChat {
-  constructor() {
-    this.context = null;
-    this.isOpen = false; // Start closed, but we'll open it in init
-    this.messages = [];
-    this.init();
-  }
+    // Load Local Knowledge Base
+    fetch('/data/context.json')
+        .then(res => res.json())
+        .then(data => { contextData = data; })
+        .catch(err => console.error("Knowledge base failed to load:", err));
 
-  async init() {
-    this.createUI();
-    this.attachEvents();
-    await this.loadContext();
-    this.addMessage('assistant', "Hi! I'm Swaraj's AI assistant. Ask me anything about his projects, skills, or experience!");
-    
-    // Automatically open after a short delay
-    setTimeout(() => {
-      if (!this.isOpen) this.toggleChat();
-    }, 1500);
-  }
+    // Local Expert Logic
+    const localExpert = {
+        findAnswer(query) {
+            if (!contextData) return "I'm still loading my knowledge base. One second!";
+            const q = query.toLowerCase();
+            
+            if (this.matches(q, ['education', 'degree', 'university', 'msc', 'btech', 'study', 'college', 'dbs', 'amity'])) {
+                const edu = contextData.education[0];
+                return `Swaraj holds an **${edu.degree}** (1.1 Honours) from ${edu.school} (${edu.year}). He also has a ${contextData.education[1].degree} from ${contextData.education[1].school}.`;
+            }
 
-  async loadContext() {
-    try {
-      const res = await fetch(CHAT_CONFIG.contextPath);
-      this.context = await res.json();
-      console.log('Chat context loaded');
-    } catch (e) {
-      console.error('Failed to load chat context', e);
-    }
-  }
+            if (this.matches(q, ['contact', 'email', 'phone', 'linkedin', 'github', 'reach', 'location', 'address'])) {
+                return `You can reach Swaraj at **${contextData.profile.email}** or **${contextData.profile.phone}**. He is based in **${contextData.profile.location}** and is ${contextData.profile.status}.`;
+            }
 
-  createUI() {
-    const widget = document.createElement('div');
-    widget.className = 'chat-widget';
-    widget.innerHTML = `
-      <div class="chat-bubble" id="chat-toggle">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-      </div>
-      <div class="chat-window" id="chat-window">
-        <div class="chat-header">
-          <div class="chat-header-icon">🧠</div>
-          <div class="chat-header-info">
-            <h3>Portfolio AI</h3>
-            <p>Knowledge: Swaraj's Projects & Skills</p>
-          </div>
-        </div>
-        <div class="chat-messages" id="chat-messages"></div>
-        <div class="typing-indicator" id="typing-indicator">AI is thinking...</div>
-        <form class="chat-input-area" id="chat-form">
-          <input type="text" class="chat-input" id="chat-input" placeholder="Ask about AutoHub, Meta, or Skills..." autocomplete="off">
-          <button type="submit" class="chat-send" id="chat-send">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-          </button>
-        </form>
-      </div>
-    `;
-    document.body.appendChild(widget);
-  }
+            if (this.matches(q, ['meta', 'work', 'experience', 'job', 'career', 'linguist', 'hindi', 'covalen'])) {
+                const meta = contextData.experience.find(e => e.company.includes('Meta'));
+                return `At **Meta**, Swaraj works as a TTS Linguist for the Hindi locale. He built evaluation suites for the Ray-Ban Meta glasses and corrected over 14k phonetic errors using custom Python tooling.`;
+            }
 
-  attachEvents() {
-    const toggle = document.getElementById('chat-toggle');
-    const form = document.getElementById('chat-form');
-    const input = document.getElementById('chat-input');
+            if (this.matches(q, ['project', 'autohub', 'datadrive', 'sorted', 'build', 'github', 'llm', 'rag', 'agent'])) {
+                const projects = contextData.projects.map(p => `**${p.name}**`).join(', ');
+                return `Swaraj has built several high-impact AI projects including ${projects}. His work spans real-time scrapers, AI orchestration (Nexus Platform), and local-first AI (Sorted).`;
+            }
 
-    toggle.onclick = () => this.toggleChat();
-    
-    form.onsubmit = async (e) => {
-      e.preventDefault();
-      const text = input.value.trim();
-      if (text) {
-        input.value = '';
-        await this.handleUserMessage(text);
-      }
+            if (this.matches(q, ['skill', 'python', 'rust', 'pytorch', 'nlp', 'machine learning', 'ai', 'tech'])) {
+                return `Swaraj is expert in **${contextData.skills.ml_ai.join(', ')}**. He is also proficient in systems programming with **Rust, Python, and C++**.`;
+            }
+
+            return `Swaraj is a ${contextData.profile.role} specializing in ${contextData.profile.specialties.slice(0, 3).join(', ')}. Ask me about his work at Meta, his MSc in AI, or his latest projects like AutoHub Ireland!`;
+        },
+        matches(q, keywords) { return keywords.some(k => q.includes(k)); }
     };
-  }
 
-  toggleChat() {
-    this.isOpen = !this.isOpen;
-    document.getElementById('chat-window').classList.toggle('active', this.isOpen);
-  }
-
-  addMessage(role, content) {
-    const container = document.getElementById('chat-messages');
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `message message-${role}`;
-    msgDiv.textContent = content;
-    container.appendChild(msgDiv);
-    container.scrollTop = container.scrollHeight;
-    this.messages.push({ role, content });
-  }
-
-  setTyping(isActive) {
-    document.getElementById('typing-indicator').classList.toggle('active', isActive);
-    document.getElementById('chat-send').disabled = isActive;
-  }
-
-  // Improved RAG: Better keyword extraction and semantic-ish matching
-  getRelevantContext(query) {
-    if (!this.context) return "";
-    
-    const queryLower = query.toLowerCase();
-    const matches = new Set();
-
-    // 1. Check Projects (Name, Desc, Stack, Highlights)
-    this.context.projects.forEach(p => {
-      const pText = `${p.name} ${p.description} ${p.stack.join(' ')} ${p.highlights.join(' ')}`.toLowerCase();
-      const queryWords = queryLower.split(/\W+/).filter(w => w.length > 2);
-      if (queryWords.some(word => pText.includes(word))) {
-        matches.add(`[Project: ${p.name}] ${p.description} (Stack: ${p.stack.join(', ')})`);
-      }
-    });
-
-    // 2. Check Skills (Directly from summary and stack tags)
-    const allStack = [...new Set(this.context.projects.flatMap(p => p.stack))];
-    allStack.forEach(skill => {
-      if (queryLower.includes(skill.toLowerCase())) {
-        matches.add(`[Skill Found] Swaraj is proficient in ${skill}.`);
-      }
-    });
-
-    // 3. Check Experience
-    this.context.experience.forEach(e => {
-      const eText = `${e.company} ${e.role}`.toLowerCase();
-      const queryWords = queryLower.split(/\W+/).filter(w => w.length > 2);
-      if (queryWords.some(word => eText.includes(word))) {
-        matches.add(`[Experience] Swaraj worked as a ${e.role} at ${e.company} (${e.date}).`);
-      }
-    });
-
-    // 4. Check Summary
-    if (this.context.summary.toLowerCase().includes(queryLower)) {
-       matches.add(`[Summary Info] ${this.context.summary.substring(0, 200)}...`);
+    function addMessage(text, isUser = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
+        
+        // Simple Markdown-ish bolding support
+        const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        msgDiv.innerHTML = `<div class="message-content">${formattedText}</div>`;
+        
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    return Array.from(matches).slice(0, 3).join('\n\n');
-  }
+    async function handleSend() {
+        const text = chatInput.value.trim();
+        if (!text) return;
 
-  async handleUserMessage(text) {
-    this.addMessage('user', text);
-    this.setTyping(true);
+        addMessage(text, true);
+        chatInput.value = '';
 
-    const contextSnippet = this.getRelevantContext(text);
-    
-    try {
-      const response = await fetch(CHAT_CONFIG.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          context: contextSnippet,
-          history: this.messages.slice(-5)
-        })
-      });
-
-      if (!response.ok) throw new Error('Offline/API Error');
-      
-      const data = await response.json();
-      this.addMessage('assistant', data.response);
-    } catch (e) {
-      console.warn('Chat using Local RAG:', e.message);
-      const fallback = this.getStaticResponse(text, contextSnippet);
-      
-      // Add a slight artificial delay for the fallback to feel "AI-like"
-      setTimeout(() => {
-        this.addMessage('assistant', fallback);
-        this.setTyping(false);
-      }, 800);
-      return;
-    }
-    this.setTyping(false);
-  }
-
-  getStaticResponse(text, context) {
-    if (context) {
-      return `Based on Swaraj's portfolio:\n\n${context}\n\n(Note: I'm currently answering using local data. For full LLM capabilities, Swaraj needs to deploy the backend worker.)`;
-    }
-    
-    // Default answers for common questions
-    const q = text.toLowerCase();
-    if (q.includes('skill') || q.includes('know') || q.includes('tech')) {
-      const skills = [...new Set(this.context.projects.flatMap(p => p.stack))].slice(0, 10).join(', ');
-      return `Swaraj has expertise in ${skills}, and more. He specializes in NLP, TTS, and LLM systems.`;
-    }
-    if (q.includes('contact') || q.includes('email') || q.includes('hire')) {
-      return `You can reach Swaraj at ${this.context.contact.email} or via LinkedIn. He is currently based in Dublin and has a Stamp 4 visa.`;
+        // Simulate a tiny delay for "thinking" feel, but response is instant local
+        setTimeout(() => {
+            const answer = localExpert.findAnswer(text);
+            addMessage(answer);
+        }, 300);
     }
 
-    return "I'm currently in local search mode. I couldn't find a direct match for that in the portfolio, but you can ask about specific projects like AutoHub, DataDrive, or his experience at Meta!";
-  }
-}
+    // Auto-open logic
+    setTimeout(() => {
+        if (chatWidget.classList.contains('hidden')) {
+            chatWidget.classList.remove('hidden');
+        }
+    }, 2000);
 
-// Initialize on load
-window.addEventListener('DOMContentLoaded', () => {
-  new PortfolioChat();
+    chatToggle.addEventListener('click', () => chatWidget.classList.toggle('hidden'));
+    chatClose.addEventListener('click', () => chatWidget.classList.add('hidden'));
+    chatSend.addEventListener('click', handleSend);
+    chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
 });

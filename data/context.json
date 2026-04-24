@@ -1,234 +1,81 @@
 {
-  "name": "Swaraj Shaw",
-  "title": "Machine Learning Engineer",
-  "summary": "Machine Learning Engineer with 5+ years of experience delivering NLP, Speech (TTS/ASR), and LLM-based systems across Big Tech and startups. Expert in text-to-speech modelling, embeddings, ONNX inference, Python/Rust ML infrastructure, evaluation design, and large-scale data quality automation. Strong track record building high-impact AI platforms, offline inference engines, ML pipelines, and production-grade products. Currently building full-stack Irish mobility platform AutoHub Ireland and pursuing an LLM Agentic AI course at DkIT while working at Meta.",
-  "projects": [
+  "profile": {
+    "name": "Swaraj Shaw",
+    "role": "Machine Learning Engineer",
+    "specialties": ["NLP", "Speech (TTS/ASR)", "LLM Systems", "Computer Vision"],
+    "location": "Dublin, Ireland",
+    "email": "shaw.swaraj16@gmail.com",
+    "phone": "+353 89 984 9430",
+    "links": {
+      "linkedin": "https://linkedin.com/in/swarajs",
+      "github": "https://github.com/swarajshaw"
+    },
+    "summary": "ML Engineer with 5+ years of experience delivering NLP, Speech, and LLM-based systems. Expert in TTS modelling, ONNX inference, and production AI pipelines.",
+    "status": "Open to opportunities · Stamp 4 · No sponsorship needed"
+  },
+  "education": [
     {
-      "name": "AutoHub Ireland",
-      "description": "Irish-localised vehicle intelligence platform: real-time fuel &amp; EV price map, best-value routing, RSA driving test scraper, and an AI Master Mechanic assistant with RAG over vehicle manuals.",
-      "highlights": [
-        "React Native mobile app (Expo) + Next.js web portal with Supabase auth",
-        "NestJS API + PostgreSQL monorepo with Docker + Render deployment",
-        "Playwright-based automated RSA wait-time scraper running on cron",
-        "Community features: verified owner badges, contributions, achievements"
-      ],
-      "stack": [
-        "Next.js",
-        "React Native",
-        "NestJS",
-        "PostgreSQL",
-        "Supabase",
-        "Playwright",
-        "Docker"
-      ]
+      "degree": "MSc Artificial Intelligence — 1.1 Honours",
+      "school": "Dublin Business School",
+      "location": "Dublin, Ireland",
+      "year": "2023",
+      "details": "Focused on advanced ML, Deep Learning, and AI ethics."
     },
     {
-      "name": "DataDrive.ai \u00b7 Nexus Platform",
-      "description": "Enterprise AI orchestration monorepo: FastAPI gateway with prompt orchestration, Next.js 19 messenger UI, async Celery workers, QLoRA LLM fine-tuning, and Whisper ASR adaptation.",
-      "highlights": [
-        "Knowledge Distillation: Automated GPT-4o teacher to local GGUF/student distillation pipeline.",
-        "Compliance ETL: PII-redaction-aware dataset exports (spaCy-powered) with audit trails.",
-        "Unified MLOps: Prefect-orchestrated nightly training, S3 model registry, and Slack-integrated failure reporting.",
-        "AI Lab: Full-stack evaluation suite for real-time model comparison using BLEU/WER metrics."
-      ],
-      "stack": [
-        "FastAPI",
-        "Next.js 19",
-        "Prefect",
-        "Celery",
-        "Redis",
-        "spaCy",
-        "GGUF",
-        "Docker",
-        "Terraform"
-      ]
-    },
-    {
-      "name": "Sorted",
-      "description": "Local-first AI file intelligence desktop app. Rust daemon with GPU-accelerated ONNX inference (Metal/DirectML) semantically renames, deduplicates, and organises files \u2014 all fully offline.",
-      "highlights": [
-        "MiniLM/BGE/Gemma embeddings for semantic rename &amp; folder recommendations",
-        "SQLite (WAL) metadata + audit trail \u2014 every action undo-safe",
-        "Tauri UI with previews, batch actions, confidence threshold config",
-        "C++ ONNX Runtime inference engine with Metal + DirectML GPU backends"
-      ],
-      "stack": [
-        "Rust",
-        "C++",
-        "ONNX Runtime",
-        "Tauri",
-        "SQLite",
-        "Python"
-      ]
-    },
-    {
-      "name": "AccessLM",
-      "description": "Run Llama 3, Mistral, and Phi-3 on any laptop \u2014 no GPU, no cloud, no login. Uses libp2p DHT to split model layers across peers, like BitTorrent for LLM inference.",
-      "highlights": [
-        "libp2p DHT peer discovery: layers distributed across the network",
-        "Encrypted prompts \u2014 no server, no IP logging, fully auditable",
-        "Supports any Hugging Face GGUF model ID out of the box"
-      ],
-      "stack": [
-        "Electron",
-        "Next.js",
-        "Rust/WASM",
-        "libp2p",
-        "HuggingFace"
-      ]
-    },
-    {
-      "name": "EasyApply",
-      "description": "Proprietary hiring intelligence platform and automation cockpit. Features custom scrapers, heuristic/ML detail normalization, and enterprise-grade recruitment signals orchestration.",
-      "highlights": [
-        "MiniLM-powered JD field extraction with automated retraining loop (Corrections \u2192 JSONL \u2192 Embeddings \u2192 Model)",
-        "High-performance Rust-based HTML extractors and job feed parsers for native-speed ingestion",
-        "Modular Node.js + PostgreSQL backend with invite-only access, admin impersonation, and job-board localization",
-        "Signal-rich analytics dashboard for live recruitment automation orchestration"
-      ],
-      "stack": [
-        "Node.js",
-        "PostgreSQL",
-        "FastAPI",
-        "MiniLM",
-        "Python",
-        "Rust"
-      ]
-    },
-    {
-      "name": "WireFree",
-      "description": "Virtual fencing platform for cattle using AirTags and BLE devices \u2014 a cost-effective alternative to Nofence. Farmers draw boundaries on a mobile map; smart alerts fire when animals approach fence lines.",
-      "highlights": [
-        "Cross-platform mobile app with real-time location tracking and alerts",
-        "AI behaviour analysis to distinguish grazing from fence-breaking events",
-        "Universal device support: AirTags, Tile, and custom collar integration"
-      ],
-      "stack": [
-        "React Native",
-        "Node.js",
-        "BLE",
-        "Maps SDK",
-        "Python"
-      ]
-    },
-    {
-      "name": "Record Genie",
-      "description": "Agentic AI music assistant built for DkIT LLM course. Implements both ReAct loop and Workflow patterns with Pydantic tool-calling (album lookup, artist search, genre queries) over a SQLite music database.",
-      "highlights": [
-        "ReAct agent: single prompt \u2192 tool call loop \u2192 LLM summary",
-        "Workflow mode: CSV batch processing, one enquiry at a time",
-        "LangSmith tracing + Groq inference backend"
-      ],
-      "stack": [
-        "Python",
-        "OpenAI SDK",
-        "Pydantic",
-        "LangSmith",
-        "Groq",
-        "SQLite"
-      ]
-    },
-    {
-      "name": "DkIT LLM Agentic AI Course",
-      "description": "Year-long production AI engineering curriculum at Dundalk Institute of Technology. Building enterprise-grade systems with RAG, agents, evals in CI, security controls, observability, and cost controls.",
-      "highlights": [
-        "Weekly labs: LangChain, vector DBs, agent workflows, prompt engineering",
-        "Infra: Docker, Terraform, Kubernetes deployment pipelines",
-        "Capstone: shippable, evaluated AI system with full observability"
-      ],
-      "stack": [
-        "Python",
-        "LangChain",
-        "Docker",
-        "Terraform",
-        "Kubernetes"
-      ]
-    },
-    {
-      "name": "LocalSpace",
-      "description": "Full-stack accommodation management portal with web and mobile clients. Designed to simplify rental management for landlords and tenants, with real-time alerts and document management.",
-      "highlights": [],
-      "stack": [
-        "React",
-        "Node.js",
-        "React Native"
-      ]
-    },
-    {
-      "name": "AcneDetection",
-      "description": "CNN-based skin condition classifier comparing ResNet, AlexNet, and VGG16 architectures under identical operational conditions. Best model deployed as a web application for real-time inference.",
-      "highlights": [
-        "ResNet, AlexNet, VGG16 evaluated with consistent train/val splits",
-        "Flask web app deployment for live image classification"
-      ],
-      "stack": [
-        "Python",
-        "PyTorch",
-        "ResNet",
-        "VGG16",
-        "Flask"
-      ]
-    },
-    {
-      "name": "TextExtraction",
-      "description": "Automated document intelligence pipeline using AWS Textract + PyTorch for invoice and document parsing. Reduced manual document processing workload by 25% in production.",
-      "highlights": [
-        "AWS Textract for OCR with PyTorch post-processing for field extraction",
-        "Structured output pipeline for invoices, forms, and receipts"
-      ],
-      "stack": [
-        "Python",
-        "AWS Textract",
-        "PyTorch"
-      ]
-    },
-    {
-      "name": "Hybrid Movie Recommender",
-      "description": "Hybrid collaborative and content-based recommender system. Combines MovieLens dataset interactions with NLP-based content analysis to provide highly accurate, dual-signal movie suggestions.",
-      "highlights": [
-        "Hybrid engine: blends collaborative filtering with TF-IDF content similarity",
-        "Advanced NLP: uses textual metadata and tags for semantic item matching",
-        "Extensive evaluation: tested on ml-latest dataset with cold-start mitigation"
-      ],
-      "stack": [
-        "Python",
-        "Jupyter",
-        "Scikit-learn",
-        "Pandas",
-        "NLP"
-      ]
+      "degree": "B.Tech Computer Science & Engineering",
+      "school": "Amity University",
+      "location": "India",
+      "year": "2019"
     }
   ],
   "experience": [
     {
-      "role": "Text-to-Speech Linguist \u2014 Hindi Locale",
-      "company": "Meta (via Covalen) \u00b7 Dublin, Ireland",
-      "date": "Oct 2023 \u2013 Present"
+      "role": "Text-to-Speech Linguist (Hindi)",
+      "company": "Meta (via Covalen)",
+      "location": "Dublin, Ireland",
+      "date": "Oct 2023 – Present",
+      "highlights": [
+        "SME for Ray-Ban Meta smart glasses Hindi TTS",
+        "Built 14k+ sentence evaluation suite",
+        "Corrected 14k+ phonetic errors in lexicon using Python",
+        "Achieved 95.6% benchmark accuracy"
+      ]
     },
     {
-      "role": "Business Intelligence & ML Engineer",
-      "company": "AspireNXT Pvt. Ltd. \u00b7 Singapore (Remote/Hybrid)",
-      "date": "Jan 2020 \u2013 Jan 2022"
-    },
-    {
-      "role": "Research Data Scientist",
-      "company": "Zeo Minds IT Solutions \u00b7 Hyderabad, India",
-      "date": "May 2019 \u2013 Jan 2020"
-    },
-    {
-      "role": "Data Analyst",
-      "company": "Digital Nest Pvt. Ltd. \u00b7 Hyderabad, India",
-      "date": "Jun 2018 \u2013 Apr 2019"
-    },
-    {
-      "role": "Android Developer",
-      "company": "E Info Solutions Pvt. Ltd. \u00b7 Kolkata, India",
-      "date": "Sept 2017 \u2013 Jun 2018"
+      "role": "BI & ML Engineer",
+      "company": "AspireNXT Pvt. Ltd.",
+      "location": "Singapore (Remote)",
+      "date": "Jan 2020 – Jan 2022",
+      "highlights": [
+        "Built conversational chatbots using Amazon Lex",
+        "Developed recommendation engines with SageMaker",
+        "Reduced operational wastage by 15% via anomaly detection"
+      ]
     }
   ],
-  "contact": {
-    "email": "shaw.swaraj16@gmail.com",
-    "linkedin": "https://linkedin.com/in/swarajs",
-    "github": "https://github.com/swarajshaw"
+  "projects": [
+    {
+      "name": "AutoHub Ireland",
+      "type": "Full-Stack AI Platform",
+      "desc": "Irish vehicle intelligence platform with real-time pricing, RSA scrapers, and an AI Master Mechanic (RAG).",
+      "stack": ["Next.js", "React Native", "NestJS", "PostgreSQL", "Supabase", "Docker"]
+    },
+    {
+      "name": "DataDrive.ai · Nexus",
+      "type": "AI Orchestration",
+      "desc": "Enterprise AI monorepo with GPT-4o distillation, async Celery workers, and QLoRA fine-tuning.",
+      "stack": ["FastAPI", "Next.js 19", "Prefect", "Celery", "Redis", "spaCy", "GGUF", "Terraform"]
+    },
+    {
+      "name": "Sorted",
+      "type": "Local AI Desktop App",
+      "desc": "Local-first AI file intelligence using Rust and GPU-accelerated ONNX inference.",
+      "stack": ["Rust", "C++", "ONNX Runtime", "Tauri", "SQLite", "Python"]
+    }
+  ],
+  "skills": {
+    "ml_ai": ["NLP", "LLMs", "TTS / ASR", "Embeddings", "ONNX Runtime", "HuggingFace"],
+    "backend": ["Rust", "Python", "C++", "FastAPI", "Node.js", "Next.js", "Celery", "Redis"],
+    "infra": ["Docker", "Terraform", "AWS SageMaker", "GCP Vertex", "PostgreSQL"]
   }
 }
