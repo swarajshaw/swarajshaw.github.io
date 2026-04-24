@@ -108,28 +108,42 @@ class PortfolioChat {
     document.getElementById('chat-send').disabled = isActive;
   }
 
-  // Simple RAG: Find relevant snippets from context
+  // Improved RAG: Better keyword extraction and semantic-ish matching
   getRelevantContext(query) {
     if (!this.context) return "";
     
     const queryLower = query.toLowerCase();
-    let relevantSnippets = [];
+    const matches = new Set();
 
-    // Search Projects
+    // 1. Check Projects (Name, Desc, Stack, Highlights)
     this.context.projects.forEach(p => {
-      if (queryLower.includes(p.name.toLowerCase()) || p.stack.some(s => queryLower.includes(s.toLowerCase()))) {
-        relevantSnippets.push(`Project: ${p.name}. Desc: ${p.description}. Tech: ${p.stack.join(', ')}.`);
+      const pText = `${p.name} ${p.description} ${p.stack.join(' ')} ${p.highlights.join(' ')}`.toLowerCase();
+      if (pText.split(/\W+/).some(word => word.length > 3 && queryLower.includes(word))) {
+        matches.add(`[Project: ${p.name}] ${p.description} (Stack: ${p.stack.join(', ')})`);
       }
     });
 
-    // Search Experience
+    // 2. Check Skills (Directly from summary and stack tags)
+    const allStack = [...new Set(this.context.projects.flatMap(p => p.stack))];
+    allStack.forEach(skill => {
+      if (queryLower.includes(skill.toLowerCase())) {
+        matches.add(`[Skill Found] Swaraj is proficient in ${skill}.`);
+      }
+    });
+
+    // 3. Check Experience
     this.context.experience.forEach(e => {
       if (queryLower.includes(e.company.toLowerCase()) || queryLower.includes(e.role.toLowerCase())) {
-        relevantSnippets.push(`Experience: ${e.role} at ${e.company} (${e.date}).`);
+        matches.add(`[Experience] Swaraj worked as a ${e.role} at ${e.company} (${e.date}).`);
       }
     });
 
-    return relevantSnippets.join('\n');
+    // 4. Check Summary
+    if (this.context.summary.toLowerCase().includes(queryLower)) {
+       matches.add(`[Summary Info] ${this.context.summary.substring(0, 200)}...`);
+    }
+
+    return Array.from(matches).slice(0, 3).join('\n\n');
   }
 
   async handleUserMessage(text) {
@@ -145,30 +159,44 @@ class PortfolioChat {
         body: JSON.stringify({
           message: text,
           context: contextSnippet,
-          history: this.messages.slice(-5) // Send last 5 messages for context
+          history: this.messages.slice(-5)
         })
       });
 
-      if (!response.ok) throw new Error('API Error');
+      if (!response.ok) throw new Error('Offline/API Error');
       
       const data = await response.json();
       this.addMessage('assistant', data.response);
     } catch (e) {
-      console.error('Chat Error:', e);
-      // Fallback if API fails or isn't deployed yet
+      console.warn('Chat using Local RAG:', e.message);
       const fallback = this.getStaticResponse(text, contextSnippet);
-      this.addMessage('assistant', fallback);
-    } finally {
-      this.setTyping(false);
+      
+      // Add a slight artificial delay for the fallback to feel "AI-like"
+      setTimeout(() => {
+        this.addMessage('assistant', fallback);
+        this.setTyping(false);
+      }, 800);
+      return;
     }
+    this.setTyping(false);
   }
 
-  // Fallback response generator if the serverless function isn't live
   getStaticResponse(text, context) {
     if (context) {
-      return `I found some relevant info in Swaraj's portfolio: ${context} Swaraj is currently working on advanced AI systems like this one!`;
+      return `Based on Swaraj's portfolio:\n\n${context}\n\n(Note: I'm currently answering using local data. For full LLM capabilities, Swaraj needs to deploy the backend worker.)`;
     }
-    return "I'm currently in 'offline' mode as the backend proxy isn't deployed yet. Swaraj is an ML Engineer specializing in TTS, NLP, and LLMs. Check out his AutoHub Ireland or DataDrive.ai projects!";
+    
+    // Default answers for common questions
+    const q = text.toLowerCase();
+    if (q.includes('skill') || q.includes('know') || q.includes('tech')) {
+      const skills = [...new Set(this.context.projects.flatMap(p => p.stack))].slice(0, 10).join(', ');
+      return `Swaraj has expertise in ${skills}, and more. He specializes in NLP, TTS, and LLM systems.`;
+    }
+    if (q.includes('contact') || q.includes('email') || q.includes('hire')) {
+      return `You can reach Swaraj at ${this.context.contact.email} or via LinkedIn. He is currently based in Dublin and has a Stamp 4 visa.`;
+    }
+
+    return "I'm currently in local search mode. I couldn't find a direct match for that in the portfolio, but you can ask about specific projects like AutoHub, DataDrive, or his experience at Meta!";
   }
 }
 
