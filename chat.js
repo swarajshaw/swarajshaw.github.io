@@ -11,7 +11,7 @@ const CHAT_CONFIG = {
 class PortfolioChat {
   constructor() {
     this.context = null;
-    this.isOpen = false;
+    this.isOpen = false; // Start closed, but we'll open it in init
     this.messages = [];
     this.init();
   }
@@ -21,6 +21,11 @@ class PortfolioChat {
     this.attachEvents();
     await this.loadContext();
     this.addMessage('assistant', "Hi! I'm Swaraj's AI assistant. Ask me anything about his projects, skills, or experience!");
+    
+    // Automatically open after a short delay
+    setTimeout(() => {
+      if (!this.isOpen) this.toggleChat();
+    }, 1500);
   }
 
   async loadContext() {
