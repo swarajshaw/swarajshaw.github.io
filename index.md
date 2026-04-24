@@ -247,7 +247,7 @@ layout: default
       <div class="project-header">
         <div class="project-icon">🌐</div>
         <div class="project-title-group">
-          <div class="project-title">AccessLM</div>
+          <div class="project-title"><a href="https://github.com/swarajshaw/AccessLM" target="_blank" rel="noopener" style="color: inherit;">AccessLM</a></div>
           <div class="project-type">P2P · Decentralised AI · Desktop</div>
         </div>
         <span class="project-badge badge-live">Open Source</span>
