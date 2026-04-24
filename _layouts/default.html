@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Swaraj Shaw — ML Engineer · NLP · Speech · LLM Systems</title>
+    <meta name="description" content="Swaraj Shaw — Machine Learning Engineer with 5+ years experience in NLP, Speech (TTS/ASR), and LLM systems. Based in Dublin, Ireland. Expert in ONNX inference, Python/Rust ML infrastructure, and production AI platforms." />
+    <meta name="author" content="Swaraj Shaw" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Swaraj Shaw — ML Engineer · NLP · Speech · LLM Systems" />
+    <meta property="og:description" content="Machine Learning Engineer with 5+ years experience across Big Tech and startups. NLP, Speech, LLMs, ONNX, Rust/Python infrastructure." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://swarajshaw.github.io/" />
+    <meta property="og:image" content="https://swarajshaw.github.io/images/swaraj.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Swaraj Shaw — ML Engineer" />
+    <meta name="twitter:description" content="5+ years in NLP, Speech, and LLM systems. Dublin, Ireland." />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://swarajshaw.github.io/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+
+    <!-- ── NAV ──────────────────────────────── -->
+    <nav class="site-nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <span class="nav-logo">Swaraj <span>Shaw</span></span>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="/pdf/swaraj_dec_2025.pdf" class="nav-cta" download>Download CV</a>
+      </div>
+    </nav>
+
+    <!-- ── MAIN CONTENT ──────────────────────── -->
+    <main class="portfolio-wrapper">
+
+      {{ content }}
+
+    </main>
+
+    <!-- ── FOOTER ────────────────────────────── -->
+    <footer>
+      <p>© 2025 Swaraj Shaw · Dublin, Ireland ·
+        <a href="https://github.com/swarajshaw" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://linkedin.com/in/swarajs" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </footer>
+
+    <!-- ── FADE-IN OBSERVER ──────────────────── -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+      });
+    </script>
+
+  </body>
+</html>
