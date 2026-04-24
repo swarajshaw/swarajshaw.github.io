@@ -205,20 +205,20 @@ layout: default
       <div class="project-header">
         <div class="project-icon">🧠</div>
         <div class="project-title-group">
-          <div class="project-title">Nexus AI Engine</div>
-          <div class="project-type">AI Platform · MLOps · LLM Fine-tuning</div>
+          <div class="project-title">DataDrive.ai · Nexus Platform</div>
+          <div class="project-type">AI Orchestration · MLOps · LLM Fine-tuning</div>
         </div>
         <span class="project-badge badge-private">Private</span>
       </div>
-      <p class="project-desc">End-to-end AI platform monorepo: FastAPI gateway with prompt orchestration, Next.js 19 messenger UI, async workers, QLoRA LLM fine-tuning, Whisper ASR adaptation, and SearXNG-backed search.</p>
+      <p class="project-desc">Enterprise AI orchestration monorepo: FastAPI gateway with prompt orchestration, Next.js 19 messenger UI, async Celery workers, QLoRA LLM fine-tuning, and Whisper ASR adaptation.</p>
       <ul class="project-highlights">
-        <li>PII-redaction-aware dataset export pipelines (JSONL + Whisper CSV)</li>
-        <li>Teacher–student distillation: queue samples → teacher call → training pairs</li>
-        <li>Prefect MLOps layer: nightly exports, eval runs, registry publishing</li>
-        <li>Launchpad metadata service with evaluation-gated "Promote to Playground"</li>
+        <li><strong>Knowledge Distillation:</strong> Automated GPT-4o teacher to local GGUF/student distillation pipeline.</li>
+        <li><strong>Compliance ETL:</strong> PII-redaction-aware dataset exports (spaCy-powered) with audit trails.</li>
+        <li><strong>Unified MLOps:</strong> Prefect-orchestrated nightly training, S3 model registry, and Slack-integrated failure reporting.</li>
+        <li><strong>AI Lab:</strong> Full-stack evaluation suite for real-time model comparison using BLEU/WER metrics.</li>
       </ul>
       <div class="project-stack">
-        <span class="stack-tag">FastAPI</span><span class="stack-tag">Next.js 19</span><span class="stack-tag">Python</span><span class="stack-tag">Celery</span><span class="stack-tag">Redis</span><span class="stack-tag">QLoRA</span><span class="stack-tag">Prefect</span><span class="stack-tag">Docker</span><span class="stack-tag">Terraform</span>
+        <span class="stack-tag">FastAPI</span><span class="stack-tag">Next.js 19</span><span class="stack-tag">Prefect</span><span class="stack-tag">Celery</span><span class="stack-tag">Redis</span><span class="stack-tag">spaCy</span><span class="stack-tag">GGUF</span><span class="stack-tag">Docker</span><span class="stack-tag">Terraform</span>
       </div>
     </div>
 
@@ -359,25 +359,7 @@ layout: default
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🛍️</div>
-        <div class="project-title-group">
-          <div class="project-title">DataDrive.ai · Visual Recommender</div>
-          <div class="project-type">AWS · SageMaker · Personalisation</div>
-        </div>
-        <span class="project-badge badge-private">Private</span>
-      </div>
-      <p class="project-desc">Large-scale visual product recommendation engine built on Amazon Personalize + SageMaker. Lambda/Glue ETL pipeline ingests catalogue data and serves real-time personalised recommendations — increased revenue by 30%.</p>
-      <ul class="project-highlights">
-        <li>Amazon Personalize + SageMaker inference endpoints</li>
-        <li>AWS Glue + Lambda ETL pipeline for catalogue ingestion</li>
-        <li>Elasticsearch-backed image similarity search</li>
-      </ul>
-      <div class="project-stack">
-        <span class="stack-tag">AWS Personalize</span><span class="stack-tag">SageMaker</span><span class="stack-tag">Glue</span><span class="stack-tag">Lambda</span><span class="stack-tag">Elasticsearch</span><span class="stack-tag">Python</span>
-      </div>
-    </div>
+
 
     <div class="project-card">
       <div class="project-header">
@@ -421,14 +403,19 @@ layout: default
       <div class="project-header">
         <div class="project-icon">🎬</div>
         <div class="project-title-group">
-          <div class="project-title">Recommender System</div>
-          <div class="project-type">Hybrid ML · Embeddings · Search</div>
+          <div class="project-title">Hybrid Movie Recommender</div>
+          <div class="project-type">Hybrid ML · NLP · Embeddings</div>
         </div>
         <span class="project-badge badge-private">Private</span>
       </div>
-      <p class="project-desc">Hybrid collaborative + content-based movie recommender combining MiniLM embeddings with traditional collaborative filtering. Deployed on SageMaker with Elasticsearch-backed similarity search.</p>
+      <p class="project-desc">Hybrid collaborative and content-based recommender system. Combines MovieLens dataset interactions with NLP-based content analysis to provide highly accurate, dual-signal movie suggestions.</p>
+      <ul class="project-highlights">
+        <li>Hybrid engine: blends collaborative filtering with TF-IDF content similarity</li>
+        <li>Advanced NLP: uses textual metadata and tags for semantic item matching</li>
+        <li>Extensive evaluation: tested on ml-latest dataset with cold-start mitigation</li>
+      </ul>
       <div class="project-stack">
-        <span class="stack-tag">Python</span><span class="stack-tag">MiniLM</span><span class="stack-tag">SageMaker</span><span class="stack-tag">Elasticsearch</span><span class="stack-tag">Scikit-learn</span>
+        <span class="stack-tag">Python</span><span class="stack-tag">Jupyter</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">Pandas</span><span class="stack-tag">NLP</span>
       </div>
     </div>
 
