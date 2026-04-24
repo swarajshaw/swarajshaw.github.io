@@ -123,7 +123,7 @@ body::before {
   position: sticky;
   top: 12px;
   z-index: 100;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px) saturate(180%);
@@ -168,12 +168,15 @@ body::before {
 .nav-links a:hover { color: var(--text-primary); }
 
 .nav-cta {
+  display: inline-flex;
+  align-items: center;
   font-size: 0.8rem;
   font-weight: 600;
-  padding: 7px 16px;
+  padding: 6px 16px;
   border-radius: var(--radius-sm);
   background: var(--accent);
   color: white !important;
+  border: 1px solid transparent;
   transition: var(--transition);
 }
 
@@ -268,7 +271,7 @@ body::before {
   font-weight: 600;
   font-size: 0.9rem;
   transition: var(--transition);
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
 }
@@ -579,6 +582,24 @@ body::before {
 }
 
 .project-card:hover::after { opacity: 1; }
+
+.project-card::before {
+  content: 'FILE://' attr(data-index);
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  opacity: 0.4;
+  transition: var(--transition);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
 
 .project-header {
   display: flex;
