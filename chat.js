@@ -4,7 +4,7 @@
  */
 
 const CHAT_CONFIG = {
-  endpoint: 'https://portfolio-chat-proxy.swarajs.workers.dev/chat', // Placeholder - User to deploy Worker
+  endpoint: 'https://yellow-water-39d4.shaw-swaraj16.workers.dev', 
   contextPath: '/data/context.json'
 };
 
