@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 5. Check Skills
-            if (this.matches(q, ['skill', 'python', 'rust', 'pytorch', 'nlp', 'machine learning', 'tech stack', 'gen ai', 'generative ai', 'llm', 'large language model'])) {
-                return `Swaraj is expert in **${knowledge.skills.ml_ai.slice(0, 5).join(', ')}** and more. His work includes building P2P LLM networks (AccessLM) and AI orchestration platforms.`;
+            if (this.matches(q, ['skill', 'python', 'rust', 'pytorch', 'nlp', 'machine learning', 'tech stack', 'gen ai', 'generative ai', 'llm', 'large language model', 'azure', 'aws', 'gcp', 'cloud', 'infrastructure'])) {
+                return `Swaraj is expert in **AWS (SageMaker, Textract)** and **GCP (Vertex AI, BigQuery)**. While he primarily works with AWS and GCP, his deep experience in MLOps and Docker makes him highly adaptable to Azure environments.`;
             }
 
             // 6. Fallback to API (LLM) if complex
