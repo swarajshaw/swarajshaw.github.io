@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         async fetchLLM(message) {
             this.showTyping(true);
             try {
-                const response = await fetch("https://portfolio-ai.swaraj-shaw.workers.dev/", {
+                const response = await fetch("https://portfolio-gemini-3-flash-live.shaw-swaraj16.workers.dev/", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
