@@ -82,7 +82,56 @@
         document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
       });
     </script>
-    <script src="/neural.js"></script>
-    <script src="/chat.js?v=1.0.2"></script>
+
+    <!-- ── CHAT WIDGET ───────────────────────── -->
+    <div id="chat-widget" class="chat-widget hidden">
+      <div id="chat-toggle" class="chat-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </div>
+
+      <div class="chat-window">
+        <div class="chat-header">
+          <div class="chat-header-icon">🧠</div>
+          <div class="chat-header-info">
+            <h3>Portfolio AI</h3>
+            <p>Knowledge: Swaraj's Projects & Skills</p>
+          </div>
+          <button id="chat-close" class="chat-close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div id="chat-messages" class="chat-messages">
+          <div class="message assistant">
+            <div class="message-content">
+              Hi! I'm Swaraj's AI assistant. Ask me anything about his projects, skills, or experience!
+            </div>
+          </div>
+        </div>
+
+        <div id="typing-indicator" class="typing-indicator">
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        </div>
+
+        <div class="chat-input-area">
+          <input type="text" id="chat-input" class="chat-input" placeholder="Type a message..." autocomplete="off">
+          <button id="chat-send" class="chat-send">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/chat.js?v=1.0.3"></script>
   </body>
 </html>

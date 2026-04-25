@@ -1,0 +1,127 @@
+{
+  "profile": {
+    "name": "Swaraj Shaw",
+    "role": "Machine Learning Engineer",
+    "location": "Dublin, Ireland",
+    "email": "shaw.swaraj16@gmail.com",
+    "phone": "+353 89 984 9430",
+    "links": {
+      "linkedin": "https://linkedin.com/in/swarajs",
+      "github": "https://github.com/swarajshaw"
+    },
+    "summary": "Machine Learning Engineer with 5+ years of experience delivering NLP, Speech (TTS/ASR), and LLM-based systems across Big Tech and startups. Expert in text-to-speech modelling, embeddings, ONNX inference, and production AI pipelines.",
+    "status": "Open to opportunities · Stamp 4 · No sponsorship needed"
+  },
+  "education": [
+    {
+      "degree": "MSc Artificial Intelligence",
+      "honours": "1.1 Honours",
+      "school": "Dublin Business School",
+      "location": "Dublin, Ireland",
+      "year": "2023",
+      "details": "Focused on advanced ML, Deep Learning, and AI ethics."
+    },
+    {
+      "degree": "B.Tech Computer Science & Engineering",
+      "school": "Amity University",
+      "location": "India",
+      "year": "2019"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Text-to-Speech Linguist — Hindi Locale",
+      "company": "Meta (via Covalen)",
+      "location": "Dublin, Ireland",
+      "date": "Oct 2023 – Present",
+      "highlights": [
+        "SME for Hindi TTS: phoneset design, G2P mappings, TN rules, and full linguistic pipeline.",
+        "Built a 14k+ sentence evaluation suite across 11 linguistic categories.",
+        "Corrected 14k+ phonetic errors in a 35k-word lexicon database using Python tooling.",
+        "Major contributor to Ray-Ban Meta smart glasses Hindi TTS."
+      ]
+    },
+    {
+      "role": "Business Intelligence & ML Engineer",
+      "company": "AspireNXT Pvt. Ltd.",
+      "location": "Singapore (Remote/Hybrid)",
+      "date": "Jan 2020 – Jan 2022",
+      "highlights": [
+        "Built conversational chatbots (Amazon Lex + Connect) across Slack and Messenger.",
+        "Delivered a recommendation engine via Amazon Personalize, increasing conversions by 15%.",
+        "Built anomaly detection pipelines for energy data; reduced operational wastage by 15%.",
+        "Automated BI dashboards (QuickSight, Tableau)."
+      ]
+    },
+    {
+      "role": "Research Data Scientist",
+      "company": "Zeo Minds IT Solutions",
+      "location": "Hyderabad, India",
+      "date": "May 2019 – Jan 2020",
+      "highlights": [
+        "Built credit-risk and churn models using SMOTE + XGBoost.",
+        "Prototyped ASR-based booking and customer support workflows."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "AutoHub Ireland",
+      "type": "Full-Stack AI Platform",
+      "desc": "Irish vehicle intelligence platform: real-time fuel & EV price map, best-value routing, RSA driving test scraper, and an AI Master Mechanic assistant with RAG.",
+      "stack": ["Next.js", "React Native", "NestJS", "PostgreSQL", "Supabase", "Playwright", "Docker"],
+      "keywords": ["autohub", "car", "fuel", "ev", "rsa", "mechanic", "rag"]
+    },
+    {
+      "name": "DataDrive.ai · Nexus Platform",
+      "type": "AI Orchestration",
+      "desc": "Enterprise AI orchestration monorepo: FastAPI gateway, GPT-4o teacher to local GGUF distillation, and PII-redaction-aware ETL.",
+      "stack": ["FastAPI", "Next.js 19", "Prefect", "Celery", "Redis", "spaCy", "GGUF", "Docker"],
+      "keywords": ["datadrive", "nexus", "orchestration", "distillation", "fine-tuning", "llm"]
+    },
+    {
+      "name": "Sorted",
+      "type": "Local AI Desktop App",
+      "desc": "Local-first AI file intelligence desktop app. Rust daemon with GPU-accelerated ONNX inference for semantic file organisation.",
+      "stack": ["Rust", "C++", "ONNX Runtime", "Tauri", "SQLite", "Python"],
+      "keywords": ["sorted", "file", "desktop", "rust", "onnx", "offline"]
+    },
+    {
+      "name": "AccessLM",
+      "type": "P2P Decentralised AI",
+      "desc": "Run Llama 3, Mistral, and Phi-3 on any laptop using libp2p DHT to split model layers across peers.",
+      "stack": ["Electron", "Next.js", "Rust/WASM", "libp2p", "HuggingFace"],
+      "keywords": ["accesslm", "p2p", "decentralised", "llama", "mistral"]
+    },
+    {
+      "name": "Record Genie",
+      "type": "LLM Agents · ReAct",
+      "desc": "Agentic AI music assistant built for DkIT LLM course. Implements ReAct loop and Workflow patterns with Pydantic tool-calling.",
+      "stack": ["Python", "OpenAI SDK", "Pydantic", "LangSmith", "Groq"],
+      "keywords": ["record genie", "agent", "react", "tool use", "music"]
+    }
+  ],
+  "skills": {
+    "ml_ai": ["NLP", "LLMs", "TTS / ASR", "Embeddings", "G2P", "ONNX Runtime", "Evaluation Design", "PyTorch", "TensorFlow", "HuggingFace", "LangChain"],
+    "backend": ["Rust", "Python", "C++", "FastAPI", "Next.js", "Node.js", "Celery", "Redis", "PostgreSQL"],
+    "infra": ["AWS SageMaker", "GCP Vertex", "Docker", "Terraform", "Kubernetes", "Prefect"]
+  },
+  "faqs": [
+    {
+      "q": "education",
+      "a": "Swaraj has an **MSc in Artificial Intelligence** (1.1 Honours) from Dublin Business School (2023) and a **B.Tech in Computer Science & Engineering** from Amity University (2019)."
+    },
+    {
+      "q": "contact",
+      "a": "You can reach Swaraj via email at **shaw.swaraj16@gmail.com** or on LinkedIn at **linkedin.com/in/swarajs**. He is based in Dublin, Ireland."
+    },
+    {
+      "q": "status",
+      "a": "Swaraj is currently **Open to opportunities** and holds a **Stamp 4** visa in Ireland, meaning he requires no sponsorship."
+    },
+    {
+      "q": "llm",
+      "a": "Swaraj has extensive experience with LLMs, including building **AccessLM** (P2P decentralised AI), **DataDrive.ai** (enterprise orchestration), and **Record Genie** (agentic music assistant). He's also currently pursuing an LLM Agentic AI course at DkIT."
+    }
+  ]
+}
