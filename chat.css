@@ -211,6 +211,13 @@
   box-shadow: 0 4px 12px var(--accent-glow);
 }
 
+.chat-send svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  display: block;
+}
+
 .chat-send:hover {
   transform: translateY(-2px);
   background: var(--accent-bright);
