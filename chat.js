@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Chatbot initializing...");
     const chatWidget = document.getElementById('chat-widget');
+    // Ensure Toggle is Visible
     const chatToggle = document.getElementById('chat-toggle');
+    if (chatToggle) {
+        console.log("Chat toggle found.");
+        chatToggle.style.display = 'flex';
+    }
     const chatClose = document.getElementById('chat-close');
     const chatMessages = document.getElementById('chat-messages');
     const chatInput = document.getElementById('chat-input');
