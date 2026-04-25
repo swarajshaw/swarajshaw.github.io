@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 5. Check Skills
-            if (this.matches(q, ['skill', 'python', 'rust', 'pytorch', 'nlp', 'machine learning', 'tech stack'])) {
-                return `Swaraj is expert in **${knowledge.skills.ml_ai.slice(0, 5).join(', ')}** and more. His primary languages are **Rust, Python, and C++**.`;
+            if (this.matches(q, ['skill', 'python', 'rust', 'pytorch', 'nlp', 'machine learning', 'tech stack', 'gen ai', 'generative ai', 'llm', 'large language model'])) {
+                return `Swaraj is expert in **${knowledge.skills.ml_ai.slice(0, 5).join(', ')}** and more. His work includes building P2P LLM networks (AccessLM) and AI orchestration platforms.`;
             }
 
             // 6. Fallback to API (LLM) if complex
@@ -112,10 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Instant local response for 90% of queries
         const response = await assistant.getResponse(text);
         
-        // Add a slight delay if it was instant for natural feel, unless it's the API which already has delay
-        if (typeof response === 'string' && !assistant.isFetching) {
+        // Add a slight delay if it was instant for natural feel
+        if (typeof response === 'string' && !typingIndicator.classList.contains('active')) {
             setTimeout(() => addMessage(response), 400);
-        } else {
+        } else if (typeof response === 'string') {
             addMessage(response);
         }
     }
