@@ -41,6 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 3. Check Projects (Dynamic Search)
+            if (this.matches(q, ['project', 'personal', 'side project', 'portfolio'])) {
+                const projectNames = knowledge.projects.map(p => p.name).join(', ');
+                return `Swaraj has built several high-impact projects including **${projectNames}**. He specializes in local-first AI, P2P networks, and RAG systems. Which one would you like to hear more about?`;
+            }
+
             for (const project of knowledge.projects) {
                 if (project.keywords.some(k => q.includes(k))) {
                     return `**${project.name}** is a ${project.type}. ${project.desc}\n\n**Stack:** ${project.stack.join(', ')}`;
