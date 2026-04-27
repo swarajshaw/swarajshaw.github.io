@@ -52,20 +52,18 @@ async function updateVisibleCounter() {
     if (!counterEl) return;
 
     try {
-        // We use CountAPI for the visible number. 
-        // Namespace: swarajshaw-portfolio, Key: visits
-        const response = await fetch(`https://api.countapi.xyz/hit/${ANALYTICS_CONFIG.namespace}/visits`);
+        // Fetch the count from your own Cloudflare Worker
+        const response = await fetch(`${ANALYTICS_CONFIG.trackerUrl.replace('/track', '/count')}`);
         const data = await response.json();
         
-        if (data.value) {
-            counterEl.textContent = data.value.toLocaleString();
-            counterEl.parentElement.classList.add('visible');
+        if (data.count) {
+            counterEl.textContent = data.count.toLocaleString();
         }
     } catch (err) {
-        // Fallback if CountAPI is down
-        counterEl.textContent = '1,240+'; // Static placeholder
-        counterEl.parentElement.classList.add('visible'); // FIX: Ensure it shows up!
+        // Fallback placeholder if worker is not yet updated
+        counterEl.textContent = '1,240+'; 
     }
+    counterEl.parentElement.classList.add('visible');
 }
 
 // Initialize when DOM is ready
