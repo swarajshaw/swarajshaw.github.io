@@ -64,6 +64,7 @@ async function updateVisibleCounter() {
     } catch (err) {
         // Fallback if CountAPI is down
         counterEl.textContent = '1,240+'; // Static placeholder
+        counterEl.parentElement.classList.add('visible'); // FIX: Ensure it shows up!
     }
 }
 
